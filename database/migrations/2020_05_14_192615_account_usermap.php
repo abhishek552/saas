@@ -16,7 +16,7 @@ class AccountUsermap extends Migration
         Schema::create('account_user_map', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('Account_id');
+            $table->bigInteger('account_id');
             $table->string('created_by');
             $table->timestamps();
         });

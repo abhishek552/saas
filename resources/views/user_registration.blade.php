@@ -12,8 +12,9 @@
                         @csrf
 
                         @if(Auth::user()->user_role==1)
-                          
                           <input type="hidden" name="user_type" id="user_type" value="2">
+                        @elseif(Auth::user()->user_role==4)
+                          <input type="hidden" name="user_type" id="user_type" value="4">
                         @endif
 
 

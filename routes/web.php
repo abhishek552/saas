@@ -25,3 +25,4 @@ Route::post('/create-user', 'HomeController@createUser')->name('create-user');
 
 Route::get('/admin-registration', 'AdminController@adminRegistration')->name('admin-registration');
 Route::post('/create-admin', 'AdminController@createAdmin')->name('create-admin');
+Route::get('/user-listing', 'HomeController@userListing')->name('user-listing');

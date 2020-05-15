@@ -27,12 +27,12 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         //dd($user);
-        if($user->user_role==1){
+        //if($user->user_role==1){
             //dd('abcdfe');
             return redirect('/user-registration');
-        }else if($user->user_role==2){
-            return redirect('/user-registration');
-        }
+        //}else if($user->user_role==2){
+            //return redirect('/user-registration');
+        //}
     }
 
     /**

@@ -19,4 +19,8 @@ class Account extends Model
     protected $fillable = [
         'account_name'
     ];
+
+    public function getAccountmap(){
+        return $this->hasOne('App\AccountuserMap','Account_id');
+    }
 }

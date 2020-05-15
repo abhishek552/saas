@@ -50,10 +50,14 @@ class HomeController extends Controller
 
     public function userRegistration(Request $request){
         $login_detail='';
-        //dd( Auth::user());
+        //echo Auth::user()->getAccountId->Account_id;
         if(Auth::user()->user_role==2){
-            $login_detail= AccountuserMap::select('account.*')->join('account','account.id','=','account_user_map.Account_id')->where('account_user_map.user_id',Auth::user()->id)->first();
+            //$login_detail= AccountuserMap::select('account.*')->join('account','account.id','=','account_user_map.Account_id')->where('account_user_map.user_id',Auth::user()->id)->first();
+            $login_detail=Account::where('id',Auth::user()->getAccountId->Account_id)->first();
+        }else if(Auth::user()->user_role==3){
+            $login_detail=Account::where('id',Auth::user()->getAccountId->Account_id)->first();
         }
+        //dd( $login_detail);
 //dd($login_detail->account_name);
         return view('user_registration',compact('login_detail'));
     }
@@ -80,14 +84,14 @@ class HomeController extends Controller
             }
             $detail= array(
                 'user_id'=>$user->id,
-                'Account_id'=>$account_id->id,
-                'created_by'=>'Global admin'
+                'Account_id'=>Auth::user()->getAccountId->Account_id,
+                'created_by'=>Auth::user()->id
             );
         }else{
              $detail= array(
                 'user_id'=>$user->id,
-                'Account_id'=>$request->input('account_id'),
-                'created_by'=>$request->input('account_name')?$request->input('account_name'):'Global admin'
+                'Account_id'=>Auth::user()->getAccountId->Account_id,
+                'created_by'=>Auth::user()->id
             );
         }
         AccountuserMap::create($detail);
@@ -95,4 +99,13 @@ class HomeController extends Controller
         return view('home');
 
     }
+
+    public function userListing(Request $request){
+        // $list= User::where('id',Auth::user()->id)->get()
+        //$accountDetails = Account::with('getAccountmap')->get(); 
+        $accountDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->get();
+        //dd($accountDetails);
+
+        return view('accountDetails',compact('accountDetails'));
+    }    
 }

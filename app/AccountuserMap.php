@@ -19,4 +19,8 @@ class AccountuserMap extends Model
         'user_id','Account_id','created_by'
     ];
 
+     public function getAccountdetail(){
+        return $this->hasOne('App\user','id','user_id');
+    }
+
 }
