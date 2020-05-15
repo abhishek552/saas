@@ -42,7 +42,8 @@
                                 <option value="4">User</option>
                               </select>
                             </div>
-                            <input type="hidden" name="user_type" id="user_type" value="2">
+                            <input type="hidden" name="account_id" id="account_id" value="{{ $login_detail->id }}">
+                            <input type="hidden" name="account_name" id="account_name" value="{{ $login_detail->account_name }}">
                           @endif
 
                         <div class="form-group row">

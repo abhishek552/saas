@@ -49,33 +49,47 @@ class HomeController extends Controller
 
 
     public function userRegistration(Request $request){
+        $login_detail='';
         //dd( Auth::user());
-        return view('user_registration');
+        if(Auth::user()->user_role==2){
+            $login_detail= AccountuserMap::select('account.*')->join('account','account.id','=','account_user_map.Account_id')->where('account_user_map.user_id',Auth::user()->id)->first();
+        }
+//dd($login_detail->account_name);
+        return view('user_registration',compact('login_detail'));
     }
 
     public function createUser(Request $request){
-        // dd($request->all())
+        //dd($request->all());
         $this->validator($request->all())->validate();
-        
+        $account_id='';
         $registerData= array(
             "name" => $request->input('name'),
             "email" => $request->input('email'),
             'user_role' =>$request->input('user_type'),
             "password" => Hash::make($request->input('password'))
         );
-        $account= array(
-            'account_name'=>$request->input('account_id')
-        );
         $user = User::create($registerData);
        // dd($user->id);
-        if($user){
-           $account= Account::create($account);
+        if(Auth::user()->user_role==1){
+
+            $account= array(
+                'account_name'=>$request->input('account_id')
+            );
+            if($user){
+               $account_id= Account::create($account);
+            }
+            $detail= array(
+                'user_id'=>$user->id,
+                'Account_id'=>$account_id->id,
+                'created_by'=>'Global admin'
+            );
+        }else{
+             $detail= array(
+                'user_id'=>$user->id,
+                'Account_id'=>$request->input('account_id'),
+                'created_by'=>$request->input('account_name')?$request->input('account_name'):'Global admin'
+            );
         }
-        $detail= array(
-            'user_id'=>$user->id,
-            'Account_id'=>$account->id,
-            'created_by'=>'abhishek',
-        );
         AccountuserMap::create($detail);
 
         return view('home');
