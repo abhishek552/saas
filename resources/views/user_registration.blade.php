@@ -11,19 +11,39 @@
                     <form method="POST" action="{{ route('create-user') }}">
                         @csrf
 
-                        <div class="form-group row">
-                          <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Account Id') }}</label>
+                        @if(Auth::user()->user_role==1)
+                          
+                          <input type="hidden" name="user_type" id="user_type" value="2">
+                        @endif
 
-                          <div class="col-md-6">
-                            <input id="account_id" type="text" class="form-control @error('account_id') is-invalid @enderror" name="account_id" value="{{ old('account_id') }}" required autocomplete="account_id" autofocus>
 
-                            @error('account_id')
-                            <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                        @if(Auth::user()->user_role==1)
+                          <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Account Id') }}</label>
+
+                            <div class="col-md-6">
+                              <input id="account_id" type="text" class="form-control @error('account_id') is-invalid @enderror" name="account_id" value="{{ old('account_id') }}" required autocomplete="account_id" autofocus>
+
+                              @error('account_id')
+                              <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                              </span>
+                              @enderror
+                            </div>
                           </div>
-                        </div>
+                          @endif
+
+                          @if(Auth::user()->user_role==2)
+                            <div class="form-group row">
+                              <label for="name" class="col-md-4 col-form-label text-md-right">Select</label>
+                              <select id="user_type" name="user_type" required class="col-md-6 form-control"  autofocus>
+                                <option value="">select option</option>
+                                <option value="3">Admin</option>
+                                <option value="4">User</option>
+                              </select>
+                            </div>
+                            <input type="hidden" name="user_type" id="user_type" value="2">
+                          @endif
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -74,6 +94,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

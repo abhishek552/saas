@@ -31,7 +31,7 @@ class LoginController extends Controller
             //dd('abcdfe');
             return redirect('/user-registration');
         }else if($user->user_role==2){
-            return redirect('/admin-registration');
+            return redirect('/user-registration');
         }
     }
 

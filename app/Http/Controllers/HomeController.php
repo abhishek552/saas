@@ -24,7 +24,7 @@ class HomeController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'account_id' => ['required', 'string', 'max:255'],
+            //'account_id' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -49,16 +49,18 @@ class HomeController extends Controller
 
 
     public function userRegistration(Request $request){
-        // dd( Auth::user());
+        //dd( Auth::user());
         return view('user_registration');
     }
 
     public function createUser(Request $request){
+        // dd($request->all())
         $this->validator($request->all())->validate();
+        
         $registerData= array(
             "name" => $request->input('name'),
             "email" => $request->input('email'),
-            'user_role' => 2,
+            'user_role' =>$request->input('user_type'),
             "password" => Hash::make($request->input('password'))
         );
         $account= array(
