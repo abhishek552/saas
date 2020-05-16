@@ -80,7 +80,7 @@ class AccountController extends Controller
         );
         //dd($detail);
         AccountuserMap::create($detail);
-        return  redirect()->back()->with('message','Account created');
+        return  redirect('account')->with('message','Account created');
     }
 
     /**

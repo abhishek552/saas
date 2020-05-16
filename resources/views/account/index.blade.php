@@ -13,6 +13,11 @@
             </div>
           </div>
           <div class="section-body">
+            @if(session()->has('message'))
+              <div class="alert alert-success">
+                  {{ session()->get('message') }}
+              </div>
+          @endif
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12">
               <div class="card">
@@ -61,7 +66,7 @@
                           </td>
                             <th scope="row">{{$i}}</th>
                             <td>{{ $accountvalue->account_name }}</td>
-                            <td></td>
+                            <td>{{ $accountvalue->account_name }}</td>
                             <td></td>
                             @if( $accountvalue->status==1)
                               <td><div class="badge badge-success">Active</div></td>

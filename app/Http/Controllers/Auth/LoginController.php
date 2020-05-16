@@ -29,7 +29,7 @@ class LoginController extends Controller
         //dd($user);
         //if($user->user_role==1){
             //dd('abcdfe');
-            return redirect('/user-registration');
+            return redirect('/dashboard');
         //}else if($user->user_role==2){
             //return redirect('/user-registration');
         //}

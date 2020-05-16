@@ -14,11 +14,11 @@
           </div>
 
           <div class="section-body">
-@if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
+          @if(session()->has('message'))
+              <div class="alert alert-success">
+                  {{ session()->get('message') }}
+              </div>
+          @endif
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12">
                 <div class="card">
