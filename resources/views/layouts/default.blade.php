@@ -9,13 +9,17 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    @include('layouts.common.style')
-<!-- /END GA -->
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-
 <body>
-    @include('layouts.common.sidebar')
-
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -66,7 +70,3 @@
           @yield('content')
       </main>
 </body>
-    @include('layouts.common.footer')
-    @include('layouts.common.js')
-
-</html>
