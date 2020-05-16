@@ -33,7 +33,7 @@ class TeamController extends Controller
     {
         //echo '<pre>'; print_r(Auth::user()->name); echo '</pre>'; die();
         //$accountDetails = Account::orderBy('id','Desc')->get(); 
-        if(Auth::user()->user_role == 2)
+        //if(Auth::user()->user_role == 2)
             $teamDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->OrderBy('id','Desc')->get();
 
         //    $teamDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->OrderBy('id','Desc')->get();
