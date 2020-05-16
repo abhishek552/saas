@@ -31,3 +31,13 @@ Route::get('/', 'HomeController@userListing')->name('user-listing');
 Route::get('/account','AccountController@index')->name('account');
 Route::get('/create-account','AccountController@create')->name('create-account');
 Route::post('/create-admin','AccountController@store')->name('create-admin');
+
+/*TeamController Route start*/
+Route::get('/team','TeamController@index')->name('team');
+Route::get('/team-user','TeamController@create')->name('team-user');
+Route::post('/create-team','TeamController@store')->name('create-team');
+
+/*End*/
+
+
+
