@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
 {
+
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'account_name' => ['required', 'string', 'max:255'],
+            'user_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +55,31 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+        $account_id='';
+        $registerData= array(
+            "name" => $request->input('user_name'),
+            "email" => $request->input('email'),
+            'user_role' =>2,
+            "password" => Hash::make($request->input('password'))
+        );
+        //dd($registerData);
+        $user = User::create($registerData);
+       // dd($user->id);
+        $account= array(
+            'account_name'=>$request->input('account_name')
+        );
+        if($user){
+           $account_id= Account::create($account);
+        }
+        $detail= array(
+            'user_id'=>$user->id,
+            'account_id'=>$account_id->id,
+            'created_by'=>Auth::user()->id
+        );
+        //dd($detail);
+        AccountuserMap::create($detail);
+        return  redirect()->back()->with('message','Account created');
     }
 
     /**

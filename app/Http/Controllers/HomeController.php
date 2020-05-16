@@ -111,5 +111,6 @@ class HomeController extends Controller
         //dd($accountDetails);
 
         return view('accountDetails',compact('accountDetails'));
-    }    
+    }   
+
 }

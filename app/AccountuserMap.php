@@ -16,7 +16,7 @@ class AccountuserMap extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id','Account_id','created_by'
+        'user_id','account_id','created_by'
     ];
 
      public function getAccountdetail(){

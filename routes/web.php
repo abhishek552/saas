@@ -30,3 +30,4 @@ Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/', 'HomeController@userListing')->name('user-listing');
 Route::get('/account','AccountController@index')->name('account');
 Route::get('/create-account','AccountController@create')->name('create-account');
+Route::post('/create-admin','AccountController@store')->name('create-admin');
