@@ -63,8 +63,12 @@
                             <td>{{ $accountvalue->account_name }}</td>
                             <td></td>
                             <td></td>
-                            <td>{{date('Y-m-d')}}</td>
-                             <td><div class="badge badge-success">Completed</div></td>
+                            @if( $accountvalue->status==1)
+                              <td><div class="badge badge-success">Active</div></td>
+                            @else
+                              <td><div class="badge badge-danger">Inactive</div></td>
+                            @endif
+                            <td>{{date('Y-m-d',strtotime($accountvalue->created_at))}}</td>
                             <td><a href="#" class="btn btn-secondary">Detail</a></td>
                           </tr>
                           @php $i++ @endphp

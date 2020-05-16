@@ -17,7 +17,7 @@ class Account extends Model
      * @var array
      */
     protected $fillable = [
-        'account_name'
+        'account_name','description'
     ];
 
     public function getAccountmap(){

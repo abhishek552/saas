@@ -32,7 +32,7 @@ class AccountController extends Controller
     public function index()
     {
         //echo '<pre>'; print_r(Auth::user()->name); echo '</pre>'; die();
-        $accountDetails = Account::get(); 
+        $accountDetails = Account::orderBy('id','Desc')->get(); 
         return view('account/index',compact('accountDetails','accountDetails'));
     }
 
@@ -67,7 +67,8 @@ class AccountController extends Controller
         $user = User::create($registerData);
        // dd($user->id);
         $account= array(
-            'account_name'=>$request->input('account_name')
+            'account_name'=>$request->input('account_name'),
+            'description'=>$request->input('description'),
         );
         if($user){
            $account_id= Account::create($account);
