@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-
+use Auth;
 
 class Account extends Model
 {
@@ -21,6 +21,6 @@ class Account extends Model
     ];
 
     public function getAccountmap(){
-        return $this->hasOne('App\AccountuserMap','account_id')->where('created_by','1');
+        return $this->hasOne('App\AccountuserMap','account_id')->where('created_by',Auth::user()->id);
     }
 }
