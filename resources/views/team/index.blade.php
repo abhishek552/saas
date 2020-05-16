@@ -53,7 +53,7 @@
                         </tr>
                         <tbody>
                         @php
-                          $i= 1;
+                          $i= 1; 
                         @endphp
                           @foreach($teamDetails as $key => $teamvalue)
                           <tr>
@@ -66,7 +66,7 @@
                             <th scope="row">{{$i}}</th>
                             <td>{{ $teamvalue->getAccountdetail->name }}</td>
                             <td>{{ $teamvalue->getAccountdetail->email }}</td>
-                            <td>{{ $teamvalue->getAccountdetail->email }}</td>
+                            <td>{{ @$userRole[$teamvalue->getAccountdetail->user_role] }}</td>
                             <td>{{date('Y-m-d',strtotime($teamvalue->getAccountdetail->created_at))}}</td>
                             <td><a href="#" class="btn btn-secondary">Detail</a></td>
                           </tr>
