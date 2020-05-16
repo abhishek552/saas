@@ -4540,6 +4540,7 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .navbar .container,
@@ -7191,6 +7192,7 @@ button.bg-dark:focus {
 
 .rounded-circle {
   border-radius: 50% !important;
+  height: 40px;
 }
 
 .rounded-pill {
@@ -10931,5 +10933,6 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+
 }
 
