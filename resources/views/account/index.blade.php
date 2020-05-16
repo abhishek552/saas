@@ -74,7 +74,7 @@
                               <td><div class="badge badge-danger">Inactive</div></td>
                             @endif
                             <td>{{date('Y-m-d',strtotime($accountvalue->created_at))}}</td>
-                            <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                            <td><a href="{{ route('edit-account',$accountvalue->id)}}" class="btn btn-secondary">Edit</a></td>
                           </tr>
                           @php $i++ @endphp
                           @endforeach
