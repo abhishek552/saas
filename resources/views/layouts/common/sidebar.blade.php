@@ -257,7 +257,7 @@
             @if(Auth::user()->user_role==1)
               <li><a class="nav-link" href="{{ route('account') }}"><i class="far fa-user"></i> <span>Account</span></a></li>
             @endif
-            @if(Auth::user()->user_role==2)
+            @if(Auth::user()->user_role>1)
               <li><a class="nav-link" href="{{ route('team') }}"><i class="far fa-user"></i> <span>Team</span></a></li>
             @endif
             <!-- <li class="dropdown">

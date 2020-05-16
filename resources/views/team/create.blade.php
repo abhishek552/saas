@@ -33,8 +33,9 @@
                       <label for="name" class="col-form-label text-md-right">{{ __('User Type') }}</label>
                       <select id="user_type" name="user_type" required class="form-control"  autofocus>
                         <option value="">select option</option>
-                        <option value="3">Admin</option>
-                        <option value="4">User</option>
+                        @foreach($user_type as $key => $value) 
+                        <option value="{{$key}}">{{ $value}}</option>
+                        @endforeach
                       </select>
                     </div>
                 

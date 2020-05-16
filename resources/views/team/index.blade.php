@@ -47,6 +47,7 @@
                           <th>S.No</th>
                           <th>User Name</th>
                           <th>Email</th>
+                          <th>Role</th>
                           <th>Created At</th>
                           <th>Action</th>
                         </tr>
@@ -64,6 +65,7 @@
                             </td>
                             <th scope="row">{{$i}}</th>
                             <td>{{ $teamvalue->getAccountdetail->name }}</td>
+                            <td>{{ $teamvalue->getAccountdetail->email }}</td>
                             <td>{{ $teamvalue->getAccountdetail->email }}</td>
                             <td>{{date('Y-m-d',strtotime($teamvalue->getAccountdetail->created_at))}}</td>
                             <td><a href="#" class="btn btn-secondary">Detail</a></td>

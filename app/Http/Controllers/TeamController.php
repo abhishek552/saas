@@ -33,7 +33,11 @@ class TeamController extends Controller
     {
         //echo '<pre>'; print_r(Auth::user()->name); echo '</pre>'; die();
         //$accountDetails = Account::orderBy('id','Desc')->get(); 
-        $teamDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->OrderBy('id','Desc')->get();
+        if(Auth::user()->user_role == 2)
+            $teamDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->OrderBy('id','Desc')->get();
+
+        //    $teamDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->OrderBy('id','Desc')->get();
+
         //dd($teamDetails);
         return view('team/index',compact('teamDetails'));
     }
@@ -45,7 +49,12 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('team.create');
+        if(Auth::user()->user_role==2)
+            $user_type = array('3'=>'Admin','4'=>'user');
+        if(Auth::user()->user_role==3)
+            $user_type = array('4'=>'User');
+        
+        return view('team.create',compact('user_type'));
 
     }
 
