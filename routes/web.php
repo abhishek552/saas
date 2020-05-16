@@ -28,3 +28,5 @@ Route::post('/create-admin', 'AdminController@createAdmin')->name('create-admin'
 Route::get('/user-listing', 'HomeController@userListing')->name('user-listing');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/', 'HomeController@userListing')->name('user-listing');
+Route::get('/account','AccountController@index')->name('account');
+Route::get('/create-account','AccountController@create')->name('create-account');

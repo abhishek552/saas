@@ -7,11 +7,11 @@
           <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
             <i class="fas fa-ellipsis-v"></i>
           </a>
-          <ul class="navbar-nav">
+          <ul class="navbar-nav" >
              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li class="nav-item active"><a href="#" class="nav-link">Application</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Report Something</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Server Status</a></li>
+            <li class="nav-item active" style="display: none;"><a href="#" class="nav-link">Application</a></li>
+            <li class="nav-item" style="display: none;"><a href="#" class="nav-link">Report Something</a></li>
+            <li class="nav-item" style="display: none;"><a href="#" class="nav-link">Server Status</a></li>
           </ul>
         </div>
 
@@ -20,7 +20,7 @@
            
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
-          <div class="search-element">
+          <div class="search-element" >
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
             <button class="btn" type="submit"><i class="fas fa-search"></i></button>
             <div class="search-backdrop"></div>
@@ -84,7 +84,7 @@
           </div>
         </form>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+          <li class="dropdown dropdown-list-toggle"  style="display: none;"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Messages
                 <div class="float-right">
@@ -150,7 +150,7 @@
               </div>
             </div>
           </li>
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+          <li class="dropdown dropdown-list-toggle"  style="display: none;"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Notifications
                 <div class="float-right">
@@ -211,7 +211,7 @@
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div></a>
+            <div class="d-sm-none d-lg-inline-block">Hi, {{Auth::user()->name}}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="dist/features_profile" class="dropdown-item has-icon">
@@ -224,14 +224,19 @@
                 <i class="fas fa-cog"></i> Settings
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item has-icon text-danger">
-                <i class="fas fa-sign-out-alt"></i> Logout
-              </a>
+                  <a class="dropdown-item has-icon text-danger" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                     <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
             </div>
           </li>
         </ul>
       </nav>
-
 
 
   <div class="main-sidebar">
@@ -239,16 +244,17 @@
           <div class="sidebar-brand sidebar-gone-show"><a href="#dist/index">MT</a></div>
           <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="dropdown">
+            <li><a class="nav-link" href="{{ route('dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+            <!-- <li class="dropdown">
               <a href="" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{{ route('dashboard') }}">General Dashboard</a></li>
                 <li><a class="nav-link" href="#dist/index">Ecommerce Dashboard</a></li>
               </ul>
-            </li>
+            </li> -->
             <li class="menu-header">Starter</li>            
             <li><a class="nav-link" href="#dist/blank"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-            <li><a class="nav-link" href="{{ route('user-listing') }}"><i class="far fa-user"></i> <span>Account</span></a></li>
+            <li><a class="nav-link" href="{{ route('account') }}"><i class="far fa-user"></i> <span>Account</span></a></li>
             <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
               <ul class="dropdown-menu">

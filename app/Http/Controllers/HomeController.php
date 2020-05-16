@@ -57,9 +57,9 @@ class HomeController extends Controller
         //echo Auth::user()->getAccountId->Account_id;
         if(Auth::user()->user_role==2){
             //$login_detail= AccountuserMap::select('account.*')->join('account','account.id','=','account_user_map.Account_id')->where('account_user_map.user_id',Auth::user()->id)->first();
-            $login_detail=Account::where('id',Auth::user()->getAccountId->Account_id)->first();
+            $login_detail=Account::where('id',Auth::user()->getAccountId->account_id)->first();
         }else if(Auth::user()->user_role==3){
-            $login_detail=Account::where('id',Auth::user()->getAccountId->Account_id)->first();
+            $login_detail=Account::where('id',Auth::user()->getAccountId->account_id)->first();
         }
         //dd( $login_detail);
 //dd($login_detail->account_name);
@@ -88,13 +88,13 @@ class HomeController extends Controller
             }
             $detail= array(
                 'user_id'=>$user->id,
-                'Account_id'=>Auth::user()->getAccountId->Account_id,
+                'account_id'=>Auth::user()->getAccountId->account_id,
                 'created_by'=>Auth::user()->id
             );
         }else{
              $detail= array(
                 'user_id'=>$user->id,
-                'Account_id'=>Auth::user()->getAccountId->Account_id,
+                'account_id'=>Auth::user()->getAccountId->account_id,
                 'created_by'=>Auth::user()->id
             );
         }
