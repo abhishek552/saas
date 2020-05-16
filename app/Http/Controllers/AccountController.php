@@ -88,7 +88,9 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $edit= Account::where('id',$id)->first();
+        return view('account.edit',compact('edit'));
     }
 
     /**
@@ -111,7 +113,13 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //dd($request->all());
+        $edit_detail=array(
+            'account_name' => $request->input('account_name'), 
+            'description' =>  $request->input('description')
+        );
+        $account_update= Account::where('id',$id)->update($edit_detail);
+        return  redirect('account')->with('message','Account Update Successfully');
     }
 
     /**
