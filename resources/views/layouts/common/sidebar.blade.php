@@ -3,20 +3,21 @@
     <div class="main-wrapper">
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
-        <a href="{{ url('/')}}" class="navbar-brand sidebar-gone-hide">MT</a>
-        <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
         <div class="nav-collapse">
           <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
             <i class="fas fa-ellipsis-v"></i>
           </a>
           <ul class="navbar-nav">
+             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
             <li class="nav-item active"><a href="#" class="nav-link">Application</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Report Something</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Server Status</a></li>
           </ul>
         </div>
+
         <form class="form-inline ml-auto">
           <ul class="navbar-nav">
+           
             <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
           </ul>
           <div class="search-element">

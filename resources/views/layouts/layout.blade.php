@@ -15,7 +15,7 @@
 
 <body >
     @include('layouts.common.sidebar')
-  <div id="app">
+  <!-- <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
@@ -59,7 +59,7 @@
           </li>
         </ul>
       </nav>
-    </div>
+    </div> -->
    
   </div>
       <main class="py-4">
