@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 
 @section('content')
       <!-- Main Content -->
@@ -18,6 +18,8 @@
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col">Email</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -27,8 +29,12 @@
                           @foreach($accountDetails as $key => $accountvalue)
                           <tr>
                             <th scope="row">{{$i}}</th>
-                            <td>{{ $accountvalue->getAccountdetail->name }}</td>
-                            <td>{{ $accountvalue->getAccountdetail->email }}</td>
+                            <td>{{ $accountvalue->account_name }}</td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              <a href="#">Delete</a>
+                            </td>
                           </tr>
                           @php $i++ @endphp
                           @endforeach

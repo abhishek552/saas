@@ -51,6 +51,7 @@ class HomeController extends Controller
     {
         return view('dashboard');
     }
+
     public function userRegistration(Request $request){
         $login_detail='';
         //echo Auth::user()->getAccountId->Account_id;
@@ -105,8 +106,8 @@ class HomeController extends Controller
 
     public function userListing(Request $request){
         // $list= User::where('id',Auth::user()->id)->get()
-        //$accountDetails = Account::with('getAccountmap')->get(); 
-        $accountDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->get();
+        $accountDetails = Account::get(); 
+        //$accountDetails= AccountuserMap::where('created_by',Auth::user()->id)->with('getAccountdetail')->get();
         //dd($accountDetails);
 
         return view('accountDetails',compact('accountDetails'));
