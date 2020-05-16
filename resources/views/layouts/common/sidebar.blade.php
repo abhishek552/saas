@@ -252,7 +252,7 @@
                 <li><a class="nav-link" href="#dist/index">Ecommerce Dashboard</a></li>
               </ul>
             </li> -->
-            <li class="menu-header">Starter</li>            
+            <li class="menu-header">Modules</li>            
             <!-- <li><a class="nav-link" href="#dist/blank"><i class="far fa-square"></i> <span>Blank Page</span></a></li> -->
             @if(Auth::user()->user_role==1)
               <li><a class="nav-link" href="{{ route('account') }}"><i class="far fa-user"></i> <span>Account</span></a></li>
@@ -285,7 +285,7 @@
                 <li><a class="nav-link" href="#dist/bootstrap_typography">Typography</a></li>
               </ul>
             </li> -->
-            <li class="menu-header">MT</li>            
+           <!--  <li class="menu-header">MT</li>  -->           
           </ul>
 
           <!-- <div class="mt-4 mb-4 p-3 hide-sidebar-mini">

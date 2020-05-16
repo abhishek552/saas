@@ -5,11 +5,11 @@
    <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Account</h1>
+            <h1>Team</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ url('/')}}">Dashboard</a></div>
               <div class="breadcrumb-item"><a href="{{ url('team')}}">Team</a></div>
-              <div class="breadcrumb-item"><a href="{{ url('team-user')}}">Add New User</a> </div>
+              <div class="breadcrumb-item"><a href="{{ url('team-user')}}">Add New Team Member</a> </div>
             </div>
           </div>
           <div class="section-body">
@@ -22,7 +22,7 @@
               <div class="col-12 col-md-12 col-lg-12">
               <div class="card">
                   <div class="card-header">
-                    <h4>Team List</h4>
+                    <h4>Team Member(s)</h4>
                     <div class="card-header-form">
                       <form>
                         <div class="input-group">
