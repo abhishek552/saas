@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -79,4 +82,19 @@ class RegisterController extends Controller
         // );
         // dd($testdata);
     }
+
+     public function register(Request $request)
+    {
+        //die();
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        auth()->logout();
+        return redirect('/')->with("error","New Password cannot be same as your current password. Please choose a different password.");
+       // $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
 }
