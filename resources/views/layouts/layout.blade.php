@@ -61,12 +61,14 @@
         </ul>
       </nav>
     </div>
+   
   </div>
       <main class="py-4">
           @yield('content')
       </main>
-</body>
+
     @include('layouts.common.footer')
     @include('layouts.common.js')
+</body>
 
 </html>
