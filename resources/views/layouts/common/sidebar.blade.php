@@ -260,6 +260,9 @@
             @if(Auth::user()->user_role>1)
               <li><a class="nav-link" href="{{ route('team') }}"><i class="far fa-user"></i> <span>Team</span></a></li>
             @endif
+            @if(Auth::user()->user_role==2)
+              <li><a class="nav-link" href="#"><i class="far fa-user"></i> <span>Permission</span></a></li>
+            @endif
             <!-- <li class="dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
               <ul class="dropdown-menu">
@@ -285,7 +288,10 @@
                 <li><a class="nav-link" href="#dist/bootstrap_typography">Typography</a></li>
               </ul>
             </li> -->
-           <!--  <li class="menu-header">MT</li>  -->           
+            <li class="menu-header">Setting</li> 
+               @if(Auth::user()->user_role>1)
+              <li><a class="nav-link" href="{{ route('team') }}"><i class="far fa-user"></i> <span>Setting</span></a></li>
+            @endif        
           </ul>
 
           <!-- <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
