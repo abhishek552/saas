@@ -66,8 +66,8 @@
                           </td>
                             <th scope="row">{{$i}}</th>
                             <td>{{ $accountvalue->account_name }}</td>
-                            <td>{{ $accountvalue->account_name }}</td>
-                            <td></td>
+                            <td>{{ $accountvalue->getAccountmap->getAccountdetail->name }}</td>
+                            <td>{{ $accountvalue->getAccountmap->getAccountdetail->email }}</td>
                             @if( $accountvalue->status==1)
                               <td><div class="badge badge-success">Active</div></td>
                             @else
