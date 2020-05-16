@@ -21,6 +21,6 @@ class Account extends Model
     ];
 
     public function getAccountmap(){
-        return $this->hasOne('App\AccountuserMap','Account_id');
+        return $this->hasOne('App\AccountuserMap','account_id')->where('created_by','1');
     }
 }

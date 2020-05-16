@@ -33,7 +33,7 @@ class AccountController extends Controller
     {
         //echo '<pre>'; print_r(Auth::user()->name); echo '</pre>'; die();
         $accountDetails = Account::orderBy('id','Desc')->get(); 
-        return view('account/index',compact('accountDetails','accountDetails'));
+        return view('account.index',compact('accountDetails'));
     }
 
     /**
@@ -63,9 +63,7 @@ class AccountController extends Controller
             'user_role' =>2,
             "password" => Hash::make($request->input('password'))
         );
-        //dd($registerData);
         $user = User::create($registerData);
-       // dd($user->id);
         $account= array(
             'account_name'=>$request->input('account_name'),
             'description'=>$request->input('description'),
@@ -78,7 +76,6 @@ class AccountController extends Controller
             'account_id'=>$account_id->id,
             'created_by'=>Auth::user()->id
         );
-        //dd($detail);
         AccountuserMap::create($detail);
         return  redirect('account')->with('message','Account created');
     }

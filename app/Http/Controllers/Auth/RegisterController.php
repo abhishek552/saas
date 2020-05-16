@@ -67,20 +67,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'user_role' => 1,
             'password' => Hash::make($data['password']),
         ]);
-        // $testdata= array(
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'user_role' => 1,
-        //     'password' => Hash::make($data['password'])
-        // );
-        // dd($testdata);
+        
     }
 
      public function register(Request $request)
@@ -91,8 +84,6 @@ class RegisterController extends Controller
         event(new Registered($user = $this->create($request->all())));
         auth()->logout();
         return redirect('/')->with("error","New Password cannot be same as your current password. Please choose a different password.");
-       // $this->guard()->login($user);
-
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
